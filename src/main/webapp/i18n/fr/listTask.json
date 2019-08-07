@@ -1,0 +1,22 @@
+{
+  "stageApp": {
+    "listTask": {
+      "home": {
+        "title": "ListTasks",
+        "createLabel": "Créer un nouveau List Task",
+        "createOrEditLabel": "Créer ou éditer un List Task",
+        "notFound": "Aucun List Task trouvé"
+      },
+      "created": "Un nouveau List Task a été créé avec l'identifiant {{ param }}",
+      "updated": "Le List Task avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le List Task avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le List Task {{ id }} ?"
+      },
+      "detail": {
+        "title": "List Task"
+      },
+      "name": "Name"
+    }
+  }
+}
