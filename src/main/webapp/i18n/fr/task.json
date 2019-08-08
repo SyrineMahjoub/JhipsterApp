@@ -17,7 +17,8 @@
         "title": "Task"
       },
       "name": "Name",
-      "description": "Description"
+      "description": "Description",
+      "listTask": "List Task"
     }
   }
 }

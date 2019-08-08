@@ -23,7 +23,7 @@ describe('Service Tests', () => {
       service = injector.get(ListTaskService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new ListTask('ID', 'AAAAAAA');
+      elemDefault = new ListTask('ID', 'AAAAAAA', 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -59,7 +59,8 @@ describe('Service Tests', () => {
       it('should update a ListTask', async () => {
         const returnedFromService = Object.assign(
           {
-            name: 'BBBBBB'
+            name: 'BBBBBB',
+            description: 'BBBBBB'
           },
           elemDefault
         );
@@ -77,7 +78,8 @@ describe('Service Tests', () => {
       it('should return a list of ListTask', async () => {
         const returnedFromService = Object.assign(
           {
-            name: 'BBBBBB'
+            name: 'BBBBBB',
+            description: 'BBBBBB'
           },
           elemDefault
         );

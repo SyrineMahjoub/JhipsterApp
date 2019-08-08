@@ -1,0 +1,76 @@
+<div>
+        <h2 id="page-heading">
+                <span jhiTranslate="stageApp.board.home.title">Board</span>
+                <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-board" [routerLink]="['/board/new']">
+                    <fa-icon [icon]="'plus'"></fa-icon>
+                    <span  jhiTranslate="stageApp.board.home.createLabel">
+                    Create new Board
+                    </span>
+                </button>
+            </h2>
+            <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="boards?.length === 0">
+        <span jhiTranslate="stageApp.board.home.notFound">No boards found</span>
+    </div>
+                <div class="container">
+                   
+                    <div class="row">
+                        <!-- Team member -->
+                        <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let board of boards ;trackBy: trackId">
+                            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                                <div class="mainflip">
+                                    <div class="frontside">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <p><img class=" img-fluid" src="../../../content/images/sharp-equalizer-24px.svg" alt="card image"></p>
+                                                <h4 class="card-title">{{board.name}}</h4>
+                                                </div>
+                                                
+                                        </div>
+                                    </div>
+                                    <div class="backside" style=" width: 100%;">
+                                        <div class="card">
+                                            <div class="card-body text-center mt-4">
+                                                <h4 class="card-title">Description</h4>
+                                                <p class="card-text" >{{board.description}}</p>
+                                                                                  </div>
+                                                                                  <div class="btn-group">
+                                                                                        <button type="submit"
+                                                                                                [routerLink]="['/board', board.id, 'view' ]"
+                                                                                                class="btn btn-info btn-sm">
+                                                                                            <fa-icon [icon]="'eye'"></fa-icon>
+                                                                                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                                                                                        </button>
+                                                                                        <button type="submit"
+                                                                                                [routerLink]="['/board', board.id, 'edit']"
+                                                                                                class="btn btn-primary btn-sm">
+                                                                                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                                                                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                                                                                        </button>
+                                                                                        <button type="submit"
+                                                                                                [routerLink]="['/', 'board', { outlets: { popup: board.id + '/delete'} }]"
+                                                                                                replaceUrl="true"
+                                                                                                queryParamsHandling="merge"
+                                                                                                class="btn btn-danger btn-sm">
+                                                                                            <fa-icon [icon]="'times'"></fa-icon>
+                                                                                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                                                                                        </button>
+                                                                                    </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                     
+                      
+            
+                    </div>
+                </div>
+           
+ 
+    
+ 
+</div>

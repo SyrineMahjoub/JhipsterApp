@@ -1,10 +1,28 @@
 {
     "fluentMethods": true,
     "clientRootFolder": "",
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipName": "task",
+            "otherEntityName": "task",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "listTask"
+        },
+        {
+            "relationshipName": "board",
+            "otherEntityName": "board",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "listTask"
+        }
+    ],
     "fields": [
         {
             "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
             "fieldType": "String"
         }
     ],

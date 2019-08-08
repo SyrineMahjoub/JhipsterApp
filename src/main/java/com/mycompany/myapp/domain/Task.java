@@ -1,7 +1,9 @@
 package com.mycompany.myapp.domain;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.io.Serializable;
 
@@ -21,6 +23,11 @@ public class Task implements Serializable {
 
     @Field("description")
     private String description;
+
+    @DBRef
+    @Field("listTask")
+    @JsonIgnoreProperties("tasks")
+    private ListTask listTask;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public String getId() {
@@ -55,6 +62,19 @@ public class Task implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public ListTask getListTask() {
+        return listTask;
+    }
+
+    public Task listTask(ListTask listTask) {
+        this.listTask = listTask;
+        return this;
+    }
+
+    public void setListTask(ListTask listTask) {
+        this.listTask = listTask;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

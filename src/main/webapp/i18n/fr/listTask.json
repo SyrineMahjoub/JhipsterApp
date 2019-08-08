@@ -16,7 +16,10 @@
       "detail": {
         "title": "List Task"
       },
-      "name": "Name"
+      "name": "Name",
+      "description": "Description",
+      "task": "Task",
+      "board": "Board"
     }
   }
 }

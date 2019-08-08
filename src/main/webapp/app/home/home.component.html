@@ -1,3 +1,57 @@
+<div class="col-md-12">
+    <button (click)="createDiv()">Add List</button>
+</div>
+      
+<div class="container">
+                    <div class="page-wrap" ng-app="myApp">
+                            <div  style="width: 100%;">
+                              <div class="horizontal-slide">
+                    <div class="row" >
+                        
+                      <div class="col-md-4" *ngFor="let list of lists ; let i = index">
+                          <div class="drag-container">
+                              <div class="section-heading">{{list.id}} 
+                                  
+                              </div>
+                          
+                              <div cdkDropList id="{{list.id}}" #pendingList="cdkDropList" [cdkDropListData]="list.list" [cdkDropListConnectedTo]="connectedTo"
+                                class="item-list" (cdkDropListDropped)="drop($event)">
+                                <div class="item-box" *ngFor="let item of list.list" cdkDrag>{{item}}</div>
+                                <div class="text-right">
+                                <button *ngIf="!formActive" mat-button class="new-list-form-button" (click)="openForm(i)">
+                                    <div fxLayout="row" fxLayoutAlign="start center">
+                                        <mat-icon class="red">add</mat-icon>
+                                        <span>Add Card</span>
+                                    </div>
+                                </button>
+                                </div>
+                                <form *ngIf="formActive" class="new-list-form"  
+                                      fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                                    
+                                    <input name="lists[i].id" [(ngModel)]="nameCard"   placeholder="Write card Name">
+           
+                                    <button mat-icon-button fxFlex="0 1 auto" (click)="addCard(list.id)">
+                                        <mat-icon>check</mat-icon>
+                                    </button>
+                                    <button mat-icon-button fxFlex="0 1 auto" (click)="closeForm()">
+                                        <mat-icon>close</mat-icon>
+                                    </button>
+                                </form> 
+                             </div>  
+                            </div>
+                          </div>
+                          
+                      </div>
+                    </div>  
+                </div>
+              </div>
+        
+   
+      
+         
+            </div>
+   
+
 <div class="row">
     <div class="col-md-3">
         <span class="hipster img-fluid rounded"></span>

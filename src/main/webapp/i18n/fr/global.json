@@ -9,6 +9,7 @@
         "main": "Entités",
         "task": "Task",
         "listTask": "List Task",
+        "board": "Board",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

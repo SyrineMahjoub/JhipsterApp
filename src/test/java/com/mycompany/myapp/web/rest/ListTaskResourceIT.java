@@ -35,6 +35,9 @@ public class ListTaskResourceIT {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
+    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+
     @Autowired
     private ListTaskRepository listTaskRepository;
 
@@ -74,7 +77,8 @@ public class ListTaskResourceIT {
      */
     public static ListTask createEntity() {
         ListTask listTask = new ListTask()
-            .name(DEFAULT_NAME);
+            .name(DEFAULT_NAME)
+            .description(DEFAULT_DESCRIPTION);
         return listTask;
     }
     /**
@@ -85,7 +89,8 @@ public class ListTaskResourceIT {
      */
     public static ListTask createUpdatedEntity() {
         ListTask listTask = new ListTask()
-            .name(UPDATED_NAME);
+            .name(UPDATED_NAME)
+            .description(UPDATED_DESCRIPTION);
         return listTask;
     }
 
@@ -110,6 +115,7 @@ public class ListTaskResourceIT {
         assertThat(listTaskList).hasSize(databaseSizeBeforeCreate + 1);
         ListTask testListTask = listTaskList.get(listTaskList.size() - 1);
         assertThat(testListTask.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testListTask.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
     }
 
     @Test
@@ -141,7 +147,8 @@ public class ListTaskResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(listTask.getId())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())));
     }
     
     @Test
@@ -154,7 +161,8 @@ public class ListTaskResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(listTask.getId()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()));
     }
 
     @Test
@@ -174,7 +182,8 @@ public class ListTaskResourceIT {
         // Update the listTask
         ListTask updatedListTask = listTaskRepository.findById(listTask.getId()).get();
         updatedListTask
-            .name(UPDATED_NAME);
+            .name(UPDATED_NAME)
+            .description(UPDATED_DESCRIPTION);
 
         restListTaskMockMvc.perform(put("/api/list-tasks")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -186,6 +195,7 @@ public class ListTaskResourceIT {
         assertThat(listTaskList).hasSize(databaseSizeBeforeUpdate);
         ListTask testListTask = listTaskList.get(listTaskList.size() - 1);
         assertThat(testListTask.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testListTask.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
     }
 
     @Test

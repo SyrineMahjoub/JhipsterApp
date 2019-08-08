@@ -20,6 +20,13 @@
                            formControlName="description"/>
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="stageApp.task.listTask" for="field_listTask">List Task</label>
+                    <select class="form-control" id="field_listTask" name="listTask" formControlName="listTask">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="listTaskOption.id === editForm.get('listTask').value?.id ? editForm.get('listTask').value : listTaskOption" *ngFor="let listTaskOption of listtasks; trackBy: trackListTaskById">{{listTaskOption.id}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

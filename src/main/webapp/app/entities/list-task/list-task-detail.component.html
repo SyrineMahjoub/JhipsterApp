@@ -9,6 +9,16 @@
                 <dd>
                     <span>{{listTask.name}}</span>
                 </dd>
+                <dt><span jhiTranslate="stageApp.listTask.description">Description</span></dt>
+                <dd>
+                    <span>{{listTask.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="stageApp.listTask.board">Board</span></dt>
+                <dd>
+                    <div *ngIf="listTask.board">
+                        <a [routerLink]="['/board', listTask.board?.id, 'view']">{{listTask.board?.id}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"
